@@ -24,4 +24,20 @@
     color: black;
     border: 1px solid black;
   }
+
+  &.google-sign-in {
+    background-color: #4285f4;
+    border: 1px solid #4285f4;
+    color: white;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    
+    &:hover {
+      background-color: #357ae8;
+      border: 1px solid #357ae8;
+    }
+  }
 }

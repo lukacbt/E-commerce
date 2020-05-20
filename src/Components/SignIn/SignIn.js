@@ -3,6 +3,7 @@ import "./signin.scss"
 
 import FormInput from "../FormInput/FormInput"
 import CustomButton from "../CustomButton/CustomButton"
+import { signInWithGoogle } from "../../Firebase/FirebaseUtils"
 
 class SignIn extends Component {
   constructor(props) {
@@ -35,7 +36,10 @@ class SignIn extends Component {
           <FormInput name="email" onChange={this.handleChange} label="email" type="email" value={this.state.email} required />
           <FormInput name="password" onChange={this.handleChange} label="password" type="password" value={this.state.password} required />
 
-          <CustomButton type="submit"> Sign In </CustomButton>
+          <div className="buttons"> 
+            <CustomButton type="submit"> Sign In </CustomButton>
+            <CustomButton isGoogleButton={true} onClick={signInWithGoogle}> Sign In With Google </CustomButton>
+          </div>
         </form>
       </div>
     )
