@@ -3,7 +3,7 @@ import "./signin.scss"
 
 import FormInput from "../FormInput/FormInput"
 import CustomButton from "../CustomButton/CustomButton"
-import { signInWithGoogle } from "../../Firebase/FirebaseUtils"
+import { auth, signInWithGoogle } from "../../Firebase/FirebaseUtils"
 
 class SignIn extends Component {
   constructor(props) {
@@ -20,16 +20,24 @@ class SignIn extends Component {
     this.setState({ [name]: value })
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault()
+    const { email, password } = this.state
 
-    this.setState({ email: "", password: "" })
+    try {
+      await auth.signInWithEmailAndPassword(email, password)
+      this.setState({ email: "", password: "" })
+    
+    }catch(err) {
+      console.log(err)
+    }
+
   }
 
   render() {
     return(
       <div className="sign-in">
-        <h2>I already have an account</h2>
+        <h2 className="title">I already have an account</h2>
         <span>Sign in with your email and password</span>
 
         <form onSubmit={this.handleSubmit}>
