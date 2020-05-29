@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { ReactComponent as Logo } from "../../assets/crown.svg"
 import { auth } from "../../Firebase/FirebaseUtils"
 import { connect } from "react-redux"
+import CartIcon from "../CartIcon/CartIcon"
 
 const Header = ({ currentUser }) => {
   return(
@@ -21,6 +22,7 @@ const Header = ({ currentUser }) => {
         {
           currentUser ? <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div> : <Link className="option" to="/signin">SIGN IN</Link>
         }
+        <CartIcon />
       </div>
     </div>
   )
