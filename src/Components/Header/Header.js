@@ -5,8 +5,9 @@ import { ReactComponent as Logo } from "../../assets/crown.svg"
 import { auth } from "../../Firebase/FirebaseUtils"
 import { connect } from "react-redux"
 import CartIcon from "../CartIcon/CartIcon"
+import CartDropdown from "../CartDropdown/CartDropdown"
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, showCartDropdown }) => {
   return(
     <div className="header">
       <Link className="logo-container" to="/">
@@ -24,12 +25,14 @@ const Header = ({ currentUser }) => {
         }
         <CartIcon />
       </div>
+      { showCartDropdown ? <CartDropdown/> : null }
     </div>
   )
 }
 
 const mapStateToProps = globalState => ({
-    currentUser: globalState.user.currentUser
+    currentUser: globalState.user.currentUser,
+    showCartDropdown: globalState.cart.showCart
 })
 
 export default connect(mapStateToProps, null)(Header)

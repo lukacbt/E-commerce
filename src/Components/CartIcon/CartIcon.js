@@ -1,13 +1,19 @@
 import React from "react"
 import "./carticon.scss"
+import { connect } from "react-redux"
+import { toggleCartDropdown } from "../../Redux/cartdropdown/cartDropdownActions"
 
 import { ReactComponent as ShoppingIcon } from "../../assets/cart.svg"
 
-const CartIcon = () => (
+const CartIcon = ({ toggleCartDropdown }) => (
 	<div className="cart-icon">
-		<ShoppingIcon className="shopping-icon" />
+		<ShoppingIcon onClick={toggleCartDropdown} className="shopping-icon" />
 		<span className="item-count">0</span>
 	</div>
 )
 
-export default CartIcon
+const mapDispatchToProps = {
+  toggleCartDropdown
+}
+
+export default connect(null, mapDispatchToProps)(CartIcon)

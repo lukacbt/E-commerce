@@ -5,7 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  svg {
+    cursor: pointer;
+  }
 
   .shopping-icon {
     width: 24px;
